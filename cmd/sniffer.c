@@ -112,7 +112,54 @@ void sniffer(FILE *log) {
         printf("\nBytes receiverd %5d\n", bytes);
 
         ip = (struct iphdr *) buffer;
-        
+        fprintf(log, "IP header length %d\n", ip->tot_len);
         printf("IP header length %d\n", ip->tot_len);
+        fprintf(log, "Protocol %d\n",ip->protocol);
+        printf("Protocol %d\n",ip->protocol);
+
+        tcp = (struct tcphdr *) (buffer + sizeof(struct iphdr));
+        fprintf(log, "Src address: ");
+        printf("Src address: ");
+
+        for (i = 0; i < 4; i++) {
+            fprintf(log, "%02x ", (unsigned char) *((char *) (&ip->saddr) + i));
+            printf("%02x ", (unsigned char) *((char *) (&ip->saddr) + i));
+        }
+
+        fprintf(log, "(");
+        printf("(");
+
+        for (i = 0; i < 4; i++) {
+            fprintf(log, "%02x ", (unsigned char) *((char *) (&ip->saddr) + i));
+            printf("%02x ", (unsigned char) *((char *) (&ip->saddr) + i));
+        }
+
+        fprintf(log, ")\nDest address: ");
+        printf(")\nDest address: ");
+
+        for (i = 0; i < 4; i++) {
+            fprintf(log, "%02d.",(unsigned char) *((char *) (&ip->daddr) + i));
+            printf("%02d.",(unsigned char) *((char *) (&ip->daddr) + i));
+        }
+
+        fprintf(log, "(");
+        printf("(");
+
+        for (i = 0; i < 4; i++) {
+            fprintf(log, "%02x ",(unsigned char) *((char *) (&ip->daddr) + i));
+            printf("%02x ",(unsigned char) *((char *) (&ip->daddr) + i));
+        }
+
+        fprintf(log, ")\n");
+        printf(")\n");
+
+        printf("Source port %d\n",ntohs(tcp->source)); 
+		printf("Dest port %d \n",ntohs(tcp->dest)); 
+		printf("FIN:%d SYN:%d RST:%d PSH:%d ACK:%d URG:%d \n",ntohs(tcp->fin)&&1,ntohs(tcp->syn)&&1,ntohs(tcp->rst)&&1,ntohs(tcp->psh)&&1,ntohs(tcp->ack)&&1,ntohs(tcp->urg)&&1);
+		printf("-------------------------\n");
+		fprintf(f,"Source port %d\n",ntohs(tcp->source)); 
+		fprintf(f,"Dest port %d \n",ntohs(tcp->dest)); 
+		fprintf(f,"FIN:%d SYN:%d RST:%d PSH:%d ACK:%d URG:%d \n",ntohs(tcp->fin)&&1,ntohs(tcp->syn)&&1,ntohs(tcp->rst)&&1,ntohs(tcp->psh)&&1,ntohs(tcp->ack)&&1,ntohs(tcp->urg)&&1);
+		fprintf(f,"-------------------------\n");
     }
 }
