@@ -157,9 +157,9 @@ void sniffer(FILE *log) {
 		printf("Dest port %d \n",ntohs(tcp->dest)); 
 		printf("FIN:%d SYN:%d RST:%d PSH:%d ACK:%d URG:%d \n",ntohs(tcp->fin)&&1,ntohs(tcp->syn)&&1,ntohs(tcp->rst)&&1,ntohs(tcp->psh)&&1,ntohs(tcp->ack)&&1,ntohs(tcp->urg)&&1);
 		printf("-------------------------\n");
-		fprintf(f,"Source port %d\n",ntohs(tcp->source)); 
-		fprintf(f,"Dest port %d \n",ntohs(tcp->dest)); 
-		fprintf(f,"FIN:%d SYN:%d RST:%d PSH:%d ACK:%d URG:%d \n",ntohs(tcp->fin)&&1,ntohs(tcp->syn)&&1,ntohs(tcp->rst)&&1,ntohs(tcp->psh)&&1,ntohs(tcp->ack)&&1,ntohs(tcp->urg)&&1);
-		fprintf(f,"-------------------------\n");
+		fprintf(log, "Source port %d\n",ntohs(tcp->source)); 
+		fprintf(log, "Dest port %d \n",ntohs(tcp->dest)); 
+		fprintf(log, "FIN:%d SYN:%d RST:%d PSH:%d ACK:%d URG:%d \n",ntohs(tcp->fin)&&1,ntohs(tcp->syn)&&1,ntohs(tcp->rst)&&1,ntohs(tcp->psh)&&1,ntohs(tcp->ack)&&1,ntohs(tcp->urg)&&1);
+		fprintf(log, "-------------------------\n");
     }
 }
