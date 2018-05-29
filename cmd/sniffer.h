@@ -1,6 +1,8 @@
+// 头文件
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <netdb.h>
 #include <sys/file.h>
 #include <sys/time.h>
@@ -13,20 +15,14 @@
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 #include <netinet/if_ether.h>
-#include <stdlib.h>
 
-int openintf(char *);
-int read_tcp(int);
-int filter(void);
-int print_header(void);
-int print_data(int, char *);
-char *hostlookup(unsigned long int);
-void clear_victim(void);
-void cleanup(int);
+#define LOG_FILE_PATH "./log.txt"
+#define BUFFER_SIZE 65535
 
-typedef struct {
-    struct ethhdr eth;
-    struct iphdr ip;
-    struct tcphdr tcp;
-    char buffer[8192];
-} etherpacket;
+// TODO
+// 那三个结构体
+
+// 设置混杂模式
+void set_promiscuous_mode(char *, FILE *);
+// 嗅探
+void sniffer(FILE *);
