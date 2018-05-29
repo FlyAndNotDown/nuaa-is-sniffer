@@ -96,7 +96,7 @@ void sniffer() {
         printf("Src address: ");
 
         for (i = 0; i < 4; i++) {
-            printf("%02x ", (unsigned char) *((char *) (&ip->saddr) + i));
+            printf("%03d ", (unsigned char) *((char *) (&ip->saddr) + i));
         }
 
         printf("(");
@@ -108,7 +108,7 @@ void sniffer() {
         printf(")\nDest address: ");
 
         for (i = 0; i < 4; i++) {
-            printf("%02d.",(unsigned char) *((char *) (&ip->daddr) + i));
+            printf("%03d.",(unsigned char) *((char *) (&ip->daddr) + i));
         }
 
         printf("(");
