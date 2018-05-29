@@ -23,6 +23,6 @@
 // 那三个结构体
 
 // 设置混杂模式
-void set_promiscuous_mode(char *, FILE *);
+void set_promiscuous_mode(char *);
 // 嗅探
-void sniffer(FILE *);
+void sniffer();
