@@ -19,9 +19,6 @@
 #define LOG_FILE_PATH "./log.txt"
 #define BUFFER_SIZE 65535
 
-// TODO
-// 那三个结构体
-
 // 设置混杂模式
 void set_promiscuous_mode(char *);
 // 嗅探
