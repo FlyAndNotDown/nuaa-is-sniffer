@@ -95,18 +95,18 @@ void sniffer(FILE *log) {
         // 接收数据
         bytes = recvfrom(fd, (char *) buffer, sizeof(buffer), 0, NULL, NULL);
 
-        fprintf(log, ">>>");
-        printf(">>>");
-
         for (i = 0; i < bytes; i++) {
-            fprintf(log, "%c", (unsigned char) buffer[i]);
-            printf("%c ", (unsigned char) buffer[i]);
+            fprintf(log, "%02x", (unsigned char) buffer[i]);
+            printf("%02x ", (unsigned char) buffer[i]);
 
             if ((i + 1) % 12 == 0) {
-                fprintf(log, "\n>>>");
-                printf("\n>>>");
+                fprintf(log, "\n");
+                printf("\n");
             }
         }
+
+        fprintf(log, "\n");
+        printf("\n");
 
         fprintf(log, "\nBytes receiverd %5d\n", bytes);
         printf("\nBytes receiverd %5d\n", bytes);
@@ -153,13 +153,13 @@ void sniffer(FILE *log) {
         fprintf(log, ")\n");
         printf(")\n");
 
-        printf("Source port %d\n",ntohs(tcp->source)); 
-		printf("Dest port %d \n",ntohs(tcp->dest)); 
-		printf("FIN:%d SYN:%d RST:%d PSH:%d ACK:%d URG:%d \n",ntohs(tcp->fin)&&1,ntohs(tcp->syn)&&1,ntohs(tcp->rst)&&1,ntohs(tcp->psh)&&1,ntohs(tcp->ack)&&1,ntohs(tcp->urg)&&1);
-		printf("-------------------------\n");
+        printf("Source port %d\n", ntohs(tcp->source)); 
+		printf("Dest port %d \n", ntohs(tcp->dest)); 
+		printf("FIN:%d SYN:%d RST:%d PSH:%d ACK:%d URG:%d \n", ntohs(tcp->fin) && 1, ntohs(tcp->syn) && 1, ntohs(tcp->rst) && 1, ntohs(tcp->psh) && 1, ntohs(tcp->ack) && 1, ntohs(tcp->urg) && 1);
+		printf("--------------------------------------------------\n");
 		fprintf(log, "Source port %d\n",ntohs(tcp->source)); 
 		fprintf(log, "Dest port %d \n",ntohs(tcp->dest)); 
-		fprintf(log, "FIN:%d SYN:%d RST:%d PSH:%d ACK:%d URG:%d \n",ntohs(tcp->fin)&&1,ntohs(tcp->syn)&&1,ntohs(tcp->rst)&&1,ntohs(tcp->psh)&&1,ntohs(tcp->ack)&&1,ntohs(tcp->urg)&&1);
-		fprintf(log, "-------------------------\n");
+		fprintf(log, "FIN:%d SYN:%d RST:%d PSH:%d ACK:%d URG:%d \n",ntohs(tcp->fin) && 1, ntohs(tcp->syn) && 1, ntohs(tcp->rst) && 1, ntohs(tcp->psh) && 1, ntohs(tcp->ack) && 1, ntohs(tcp->urg) && 1);
+		fprintf(log, "--------------------------------------------------\n");
     }
 }
