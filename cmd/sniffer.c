@@ -95,6 +95,9 @@ void sniffer(FILE *log) {
         // 接收数据
         bytes = recvfrom(fd, (char *) buffer, sizeof(buffer), 0, NULL, NULL);
 
+        fprintf(log, "\n");
+        printf("\n");
+
         for (i = 0; i < bytes; i++) {
             fprintf(log, "%02x", (unsigned char) buffer[i]);
             printf("%02x ", (unsigned char) buffer[i]);
