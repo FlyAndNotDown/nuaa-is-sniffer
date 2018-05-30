@@ -1,1 +1,1 @@
-gcc ./sniffer.c -o ./dist/sniffer
+gcc ./sniffer.c -o ./sniffer
